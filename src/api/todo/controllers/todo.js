@@ -11,6 +11,7 @@ module.exports = createCoreController("api::todo.todo", ({ strapi }) => ({
     try {
       const { id } = ctx.state.user
 
+      // Create Task
       const entry = await strapi.entityService.create("api::todo.todo", {
         data: {
           ...ctx.request.body,
@@ -20,7 +21,9 @@ module.exports = createCoreController("api::todo.todo", ({ strapi }) => ({
         }
       })
 
+      // Send 200 response
       ctx.body = entry
+
     } catch (err) {
       return ctx.badRequest(err.message)
     }
@@ -74,6 +77,7 @@ module.exports = createCoreController("api::todo.todo", ({ strapi }) => ({
         }
       });
 
+      // Send 200 response
       return ctx.body = response;
       
     } catch (err) {
@@ -97,7 +101,7 @@ module.exports = createCoreController("api::todo.todo", ({ strapi }) => ({
         }
       })
 
-      // Send 200 success
+      // Send 200 response
       ctx.body = response
 
     } catch (err) {
@@ -122,7 +126,7 @@ module.exports = createCoreController("api::todo.todo", ({ strapi }) => ({
         }
       })
       
-      // Send 200 success
+      // Send 200 response
       ctx.body = response
       
     } catch (err) {
